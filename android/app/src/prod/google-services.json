@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "396902258002",
+    "project_id": "opensort-prod",
+    "storage_bucket": "opensort-prod.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:396902258002:android:8c323576b7ec98a327568b",
+        "android_client_info": {
+          "package_name": "com.opensort.org"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "396902258002-4bifohuavv5vkn733m8qr5sc00d46sgk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDv7pjhJtC7a-5A-Xr1SSSeNm6DCPwGzdI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "396902258002-4bifohuavv5vkn733m8qr5sc00d46sgk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
