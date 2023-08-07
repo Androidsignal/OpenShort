@@ -24,6 +24,7 @@ class _NewSocketFormScreenState extends State<NewSocketFormScreen> {
         child: SizedBox(
           child: Column(
             children: [
+
               TextFormField()
             ],
           ),
