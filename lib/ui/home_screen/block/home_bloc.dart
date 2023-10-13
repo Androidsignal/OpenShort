@@ -1,8 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:org/ui/Home_Screen/bloc/home_event.dart';
-import 'package:org/ui/Home_Screen/bloc/home_state.dart';
+
+import 'package:org/ui/home_screen/block/home_event.dart';
+import 'package:org/ui/home_screen/block/home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc() : super(const HomeState()) {

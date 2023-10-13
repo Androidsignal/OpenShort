@@ -1,4 +1,3 @@
-
 import 'package:equatable/equatable.dart';
 
 class HomeState extends Equatable {
@@ -8,10 +7,8 @@ class HomeState extends Equatable {
 
   HomeState copy({
     required int selectedIndex,
-}) {
-    return HomeState(
-      selectedIndex: selectedIndex ?? this.selectedIndex
-    );
+  }) {
+    return HomeState(selectedIndex: selectedIndex);
   }
 
   @override

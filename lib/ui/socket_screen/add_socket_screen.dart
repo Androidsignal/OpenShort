@@ -2,14 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:org/constant/string_constant.dart';
 import 'package:org/infrastucture/theme/theme_constant.dart';
 
-class AddSocketScreen extends StatefulWidget {
+class AddSocketScreen extends StatelessWidget {
   const AddSocketScreen({super.key});
 
-  @override
-  State<AddSocketScreen> createState() => _AddSocketScreenState();
-}
-
-class _AddSocketScreenState extends State<AddSocketScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -208,66 +203,4 @@ class _AddSocketScreenState extends State<AddSocketScreen> {
       ),
     );
   }
-
-// gridViewCard({IconData? icon,required String text,GestureTapCallback? editOnTap,GestureTapCallback? infoOnTaps}) {
-//   return Card(
-//     child: SizedBox(
-//       height: 160,
-//       child: Column(
-//         children: [
-//           const Spacer(),
-//            Icon(
-//             icon,
-//             size: 60,
-//           ),
-//           Text(
-//             text,
-//             style: Theme.of(context).textTheme.titleLarge?.copyWith(
-//               fontWeight: FontWeight.w600,
-//             ),
-//           ),
-//           const SizedBox(
-//             height: 8,
-//           ),
-//           Row(
-//             mainAxisAlignment: MainAxisAlignment.spaceAround,
-//             children: [
-//               Container(
-//                 width: 60,
-//                 decoration: BoxDecoration(border: Border.all(color: context.designColor, width: 1), borderRadius: BorderRadius.circular(5)), //<-- SEE HERE
-//                 child: InkWell(
-//                   onTap: editOnTap,
-//                   child: Padding(
-//                     padding: const EdgeInsets.all(6.0),
-//                     child: Icon(
-//                       Icons.edit,
-//                       size: 18.0,
-//                       color: context.designColor,
-//                     ),
-//                   ),
-//                 ),
-//               ),
-//               Container(
-//                 width: 60,
-//                 decoration: BoxDecoration(border: Border.all(color: context.designColor, width: 1), borderRadius: BorderRadius.circular(5)), //<-- SEE HERE
-//                 child: InkWell(
-//                   onTap: infoOnTaps,
-//                   child: Padding(
-//                     padding: const EdgeInsets.all(6.0),
-//                     child: Icon(
-//                       Icons.info_outline_rounded,
-//                       size: 18.0,
-//                       color: context.designColor,
-//                     ),
-//                   ),
-//                 ),
-//               ),
-//             ],
-//           ),
-//           const Spacer(),
-//         ],
-//       ),
-//     ),
-//   );
-// }
 }

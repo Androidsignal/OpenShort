@@ -2,14 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:org/constant/string_constant.dart';
 import 'package:org/infrastucture/theme/theme_constant.dart';
 
-class NewSocketFormScreen extends StatefulWidget {
-  const NewSocketFormScreen({super.key});
+class FormCreateScreen extends StatelessWidget {
+  const FormCreateScreen({super.key});
 
-  @override
-  State<NewSocketFormScreen> createState() => _NewSocketFormScreenState();
-}
-
-class _NewSocketFormScreenState extends State<NewSocketFormScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
