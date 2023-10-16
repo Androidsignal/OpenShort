@@ -4,9 +4,7 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:org/app.dart';
 import 'package:org/config/evn.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:sqflite/sqflite.dart';
 import 'config/firebase_options_dev.dart';
-import 'constant/gloable.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

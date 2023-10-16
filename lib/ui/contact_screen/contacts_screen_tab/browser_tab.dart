@@ -21,7 +21,12 @@ class BrowserTab extends StatelessWidget {
           ),
           Container(
             margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-            decoration: BoxDecoration(borderRadius: const BorderRadius.all(Radius.circular(5)), border: Border.all(color: context.designColor)),
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.all(Radius.circular(5)),
+              border: Border.all(
+                color: context.designColor,
+              ),
+            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

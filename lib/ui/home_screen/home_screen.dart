@@ -4,11 +4,11 @@ import 'package:org/constant/string_constant.dart';
 import 'package:org/infrastucture/theme/theme_constant.dart';
 import 'package:org/ui/setting_screen/setting_screen.dart';
 import 'package:org/ui/socket_screen/socket_screen.dart';
-import 'package:org/ui/home_screen/block/home_event.dart';
+import 'package:org/ui/home_screen/bloc/home_event.dart';
 import 'package:org/ui/support_screen/support_screen.dart';
 import '../contact_screen/contact_screen.dart';
-import 'block/home_bloc.dart';
-import 'block/home_state.dart';
+import 'bloc/home_bloc.dart';
+import 'bloc/home_state.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

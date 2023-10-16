@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:org/constant/string_constant.dart';
 import 'package:org/infrastucture/model/generate_key_model.dart';
 import 'package:org/infrastucture/theme/theme_constant.dart';
 import 'package:org/ui/contact_screen/bloc/contact_screen_bloc.dart';
@@ -24,27 +25,35 @@ class GenerateKeyQrCodeScreen extends StatelessWidget {
         children: [
           IconButton(
             onPressed: () {
-              context.read<ContactsScreenBloc>().add(QrCodeCheck(isQrCode: false));
+              context.read<ContactsScreenBloc>().add(
+                    QrCodeCheck(isQrCode: false),
+                  );
             },
             icon: Icon(Icons.arrow_back_outlined, color: context.designColor),
           ),
           Center(
             child: Column(
               children: [
-                Text(keyList?.name ?? '', textAlign: TextAlign.center, style: Theme.of(context).textTheme.titleMedium),
+                Text(
+                  keyList?.name ?? '',
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
                 const SizedBox(
                   height: 10,
                 ),
                 Text(
                   keyList?.email ?? '',
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.titleLarge?.copyWith(color: context.designColor),
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        color: context.designColor,
+                      ),
                 ),
                 const SizedBox(
                   height: 10,
                 ),
                 Text(
-                  'fnejhfjufhdjbjdsfgdsgrgbdfgfgdfgfdghfdg',
+                  StringConst.userKeys,
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(color: context.grey),
                 ),
@@ -69,7 +78,10 @@ class GenerateKeyQrCodeScreen extends StatelessWidget {
                 ),
                 Text(
                   keyList?.dateTime ?? '',
-                  style: Theme.of(context).textTheme.titleSmall?.copyWith(color: context.grey, fontWeight: FontWeight.w600),
+                  style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                        color: context.grey,
+                        fontWeight: FontWeight.w600,
+                      ),
                 ),
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
@@ -85,7 +97,10 @@ class GenerateKeyQrCodeScreen extends StatelessWidget {
                     scrollDirection: Axis.vertical,
                     child: Text(
                       keyList?.key.toString() ?? '',
-                      style: Theme.of(context).textTheme.titleSmall?.copyWith(color: context.grey, fontWeight: FontWeight.w600),
+                      style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                            color: context.grey,
+                            fontWeight: FontWeight.w600,
+                          ),
                     ),
                   ),
                 ),
@@ -96,8 +111,6 @@ class GenerateKeyQrCodeScreen extends StatelessWidget {
                     children: [
                       IconButton(
                         onPressed: () {
-                          // _onShare(context,encryptionResultController.text);
-                          //  await Share.share(encryptionResultController.text, subject: 'Sharing Key');
                         },
                         icon: Icon(Icons.share, color: context.designColor),
                       ),

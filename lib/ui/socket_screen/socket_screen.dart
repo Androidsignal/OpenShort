@@ -15,7 +15,6 @@ class SocketScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: false,
         title: const Text(
           StringConst.home,
         ),
@@ -28,13 +27,12 @@ class SocketScreen extends StatelessWidget {
                   Scaffold.of(context).openDrawer();
                 },
                 child: Container(
-                  padding: const EdgeInsets.only(top: 1.5),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     color: context.white,
                   ),
                   child: Text(
-                    "H",
+                    StringConst.h,
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                           fontWeight: FontWeight.bold,
@@ -119,13 +117,14 @@ class SocketScreen extends StatelessWidget {
                   children: [
                     Container(
                       alignment: Alignment.topLeft,
+                      margin: const EdgeInsets.only(left: 5),
                       child: TextButton.icon(
                         autofocus: false,
                         onPressed: () {},
                         icon: const Icon(Icons.add_circle_outline),
                         label: Text(
                           StringConst.circleButton,
-                          style: Theme.of(context).textTheme.titleSmall,
+                          style: Theme.of(context).textTheme.titleMedium,
                         ),
                       ),
                     ),

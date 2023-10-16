@@ -6,6 +6,8 @@ import 'package:org/ui/register_screen/register_screen.dart';
 import 'package:org/ui/socket_screen/add_socket_screen.dart';
 import 'package:org/ui/socket_screen/form_create_screen.dart';
 
+import '../../ui/profile_screen/profile_screen.dart';
+
 
 class NameRoutes {
   static final NameRoutes _singleton = NameRoutes._internal();
@@ -17,11 +19,6 @@ class NameRoutes {
     return _singleton;
 
   }
-  //  static Database? database;
-  //
-  // checkUserRegister() async {
-  //   database = await openDatabase('generateKey.db');
-  // }
 
 
   static ValueNotifier<dynamic> changeListener = ValueNotifier(null);
@@ -31,22 +28,13 @@ class NameRoutes {
   static const secondScreen = "/secondScreen";
   static const addSocketScreen = "/addSocketScreen";
   static const newSocketFormScreen = "/newSocketFormScreen";
+  static const profileScreen = "/profileScreen";
 
 
   static final GoRouter router = GoRouter(
-    // initialLocation: DbHelper.database().isUndefinedOrNull ? registerScreen : homeScreen ,
-    // initialLocation: database != null ? homeScreen : registerScreen,
+
     initialLocation:  homeScreen ,
     refreshListenable: changeListener,
-    // redirect: (context, state) async {
-    //
-    //   if (DbHelper.database().isUndefinedOrNull) {
-    //     return registerScreen.parsePath;
-    //   }
-    //     return homeScreen.parsePath;
-    //
-    //
-    // },
     navigatorKey: AppNavigator.navigatorKey,
     routes: [
       GoRoute(
@@ -78,6 +66,13 @@ class NameRoutes {
           return const FormCreateScreen();
         },
       ),
+      GoRoute(
+        path: profileScreen.parsePath,
+        name: profileScreen,
+        builder: (BuildContext context, GoRouterState state) {
+          return const ProfileScreen();
+        },
+      ),
     ],
   );
 }
@@ -95,6 +90,8 @@ extension PathRoute on String {
         return '/addSocketScreen';
       case NameRoutes.newSocketFormScreen:
         return '/newSocketFormScreen';
+      case NameRoutes.profileScreen:
+        return '/profileScreen';
       default:
         return '/unknown';
     }

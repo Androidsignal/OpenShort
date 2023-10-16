@@ -28,7 +28,7 @@ class RegisterScreen extends StatelessWidget {
                 obscureText: true,
               validator: (value) {
                 if (value!.isEmpty) {
-                  return 'Name is required*';
+                  return StringConst.nameRequired;
                 }
                 return null;
               },
@@ -46,7 +46,7 @@ class RegisterScreen extends StatelessWidget {
                 keyboardType: TextInputType.name,
                  validator: (value) {
                    if (value!.isEmpty) {
-                     return 'Username is required*';
+                     return StringConst.userNameRequired;
                    }
                    return null;
                  },

@@ -29,9 +29,7 @@ class _ShowKeyListScreenState extends State<ShowKeyListScreen> {
             Card(
               elevation: 2,
               child: ListTile(
-                onTap: () {
-                  context.read<ContactsScreenBloc>().add(QrCodeCheck(isQrCode: true));
-                },
+
                 leading: Container(
                   height: 45,
                   width: 45,
@@ -97,7 +95,12 @@ class _ShowKeyListScreenState extends State<ShowKeyListScreen> {
                           elevation: 2,
                           child: ListTile(
                             onTap: () {
-                              context.read<ContactsScreenBloc>().add(QrCodeCheck(isQrCode: true, keyList: keyList[index]));
+                              context.read<ContactsScreenBloc>().add(
+                                    QrCodeCheck(
+                                      isQrCode: true,
+                                      keyList: keyList[index],
+                                    ),
+                                  );
                             },
                             title: Row(
                               children: [
@@ -108,16 +111,25 @@ class _ShowKeyListScreenState extends State<ShowKeyListScreen> {
                                       ),
                                 ),
                                 const Spacer(),
-                                Text(keyList[index].dateTime, style: Theme.of(context).textTheme.labelMedium),
+                                Text(
+                                  keyList[index].dateTime,
+                                  style: Theme.of(context).textTheme.labelMedium,
+                                ),
                               ],
                             ),
                             subtitle: Padding(
                               padding: const EdgeInsets.only(top: 10),
                               child: Row(
                                 children: [
-                                  Text(keyList[index].email, style: Theme.of(context).textTheme.bodySmall),
+                                  Text(
+                                    keyList[index].email,
+                                    style: Theme.of(context).textTheme.bodySmall,
+                                  ),
                                   const Spacer(),
-                                  Text(StringConst.myKey, style: Theme.of(context).textTheme.bodySmall),
+                                  Text(
+                                    StringConst.myKey,
+                                    style: Theme.of(context).textTheme.bodySmall,
+                                  ),
                                 ],
                               ),
                             ),

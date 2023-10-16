@@ -1,6 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:openpgp/model/bridge_model_generated.dart';
-
 import '../../../infrastucture/model/generate_key_model.dart';
 
 abstract class ContactsScreenEvent extends Equatable {

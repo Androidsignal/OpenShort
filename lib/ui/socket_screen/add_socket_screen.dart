@@ -9,12 +9,8 @@ class AddSocketScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           StringConst.socket,
-          style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                color: context.white,
-                fontWeight: FontWeight.w500,
-              ),
         ),
       ),
       body: Center(
@@ -60,59 +56,62 @@ class AddSocketScreen extends StatelessWidget {
                       ),
                       onPressed: () {
                         showModalBottomSheet<void>(
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(topLeft: Radius.circular(24), topRight: Radius.circular(24)),
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(24),
+                              topRight: Radius.circular(24),
                             ),
-                            context: context,
-                            builder: (BuildContext context) {
-                              return SizedBox(
-                                height: MediaQuery.of(context).size.height * 0.12,
-                                width: double.infinity,
-                                child: Column(
-                                   mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Container(
-                                      margin: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.3),
-                                      height: 2,
-                                      color: context.designColor,
+                          ),
+                          context: context,
+                          builder: (BuildContext context) {
+                            return SizedBox(
+                              height: MediaQuery.of(context).size.height * 0.12,
+                              width: double.infinity,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.symmetric(
+                                      horizontal: MediaQuery.of(context).size.width * 0.3,
                                     ),
-                                    Divider(
-                                      color: context.grey,
-                                      thickness: 1,
-                                    ),
-                                    InkWell(
-                                      onTap: () {},
-                                      child: Text(
-                                        StringConst.news,
-                                        style: Theme.of(context).textTheme.titleMedium?.copyWith(color: context.designColor, fontWeight: FontWeight.w500),
-                                      ),
-                                    ),
-                                    Divider(
-                                      color: context.grey,
-                                      thickness: 1,
-                                    ),
-                                    InkWell(
-                                      onTap: () {},
-                                      child: Text(
-                                        StringConst.activate,
-                                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                                    height: 2,
+                                  ),
+                                  InkWell(
+                                    onTap: () {},
+                                    child: Text(
+                                      StringConst.news,
+                                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
                                             color: context.designColor,
-                                            fontWeight: FontWeight.w500
-                                        ),
-                                      ),
+                                            fontWeight: FontWeight.w500,
+                                          ),
                                     ),
-                                    Divider(
-                                      color: context.grey,
-                                      thickness: 1,
+                                  ),
+                                  Divider(
+                                    color: context.grey,
+                                    thickness: 1,
+                                  ),
+                                  InkWell(
+                                    onTap: () {},
+                                    child: Text(
+                                      StringConst.activate,
+                                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                                            color: context.designColor,
+                                            fontWeight: FontWeight.w500,
+                                          ),
                                     ),
-                                  ],
-                                ),
-                              );
-                            });
+                                  ),
+
+                                ],
+                              ),
+                            );
+                          },
+                        );
                       },
                       child: Text(
                         StringConst.addSocketButton,
-                        style: Theme.of(context).textTheme.titleMedium?.copyWith(color: context.white),
+                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                              color: context.white,
+                            ),
                       ),
                     ),
                     const SizedBox(
@@ -148,17 +147,17 @@ class AddSocketScreen extends StatelessWidget {
                               ),
                         ),
                         const SizedBox(
-                          height: 8,
+                          height: 10,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             Container(
-                              width: 60,
+                              width: 70,
                               decoration: BoxDecoration(
                                 border: Border.all(color: context.designColor, width: 1),
                                 borderRadius: BorderRadius.circular(5),
-                              ), //<-- SEE HERE
+                              ),
                               child: InkWell(
                                 onTap: () {},
                                 child: Padding(
@@ -172,7 +171,7 @@ class AddSocketScreen extends StatelessWidget {
                               ),
                             ),
                             Container(
-                              width: 60,
+                              width: 70,
                               decoration: BoxDecoration(
                                 border: Border.all(color: context.designColor, width: 1),
                                 borderRadius: BorderRadius.circular(5),

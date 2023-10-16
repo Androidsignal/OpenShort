@@ -39,25 +39,47 @@ class _DecryptionTabState extends State<DecryptionTab> {
     return BlocBuilder<ContactsScreenBloc, ContactsScreenState>(builder: (context, state) {
       return SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
-        child: Stack(
-          children: [
-            Column(
-              children: [
-                Row(
-                  children: [
-                    Column(
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            context.read<ContactsScreenBloc>().add(
-                                  DecryptionShowKeyList(showKeyListDecry: true),
-                                );
-                            context.read<ContactsScreenBloc>().add(
-                                  DecryptionSigningDown(isDecrypDown: true),
-                                );
-                          },
-                          child: Container(
-                            margin: const EdgeInsets.only(top: 10, bottom: 15),
+        child: InkWell(
+          onTap: () {
+            context.read<ContactsScreenBloc>().add(DecryptionShowKeyList(showKeyListDecry: false));
+            context.read<ContactsScreenBloc>().add(DecryptionSigningDown(isDecrypDown: false));
+          },
+          child: Stack(
+            children: [
+              Column(
+                children: [
+                  Row(
+                    children: [
+                      Column(
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              context.read<ContactsScreenBloc>().add(
+                                    DecryptionShowKeyList(showKeyListDecry: true),
+                                  );
+                              context.read<ContactsScreenBloc>().add(
+                                    DecryptionSigningDown(isDecrypDown: true),
+                                  );
+                            },
+                            child: Container(
+                              margin: const EdgeInsets.only(top: 10, bottom: 15),
+                              height: 55,
+                              width: state.buttonShowDec ? MediaQuery.of(context).size.width / 1.65 : MediaQuery.of(context).size.width / 1.12,
+                              decoration: BoxDecoration(
+                                border: Border.all(width: 1, color: context.designColor),
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              child: ListTile(
+                                title: Text(selectedName),
+                                trailing: Icon(
+                                  state.isDecrypDown ? Icons.arrow_drop_down_outlined : Icons.arrow_drop_up,
+                                  color: context.designColor,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(bottom: 25),
                             height: 55,
                             width: state.buttonShowDec ? MediaQuery.of(context).size.width / 1.65 : MediaQuery.of(context).size.width / 1.12,
                             decoration: BoxDecoration(
@@ -65,178 +87,153 @@ class _DecryptionTabState extends State<DecryptionTab> {
                               borderRadius: BorderRadius.circular(5),
                             ),
                             child: ListTile(
-                              title: Text(selectedName),
+                              title: const Text(StringConst.verifyingKey),
                               trailing: Icon(
-                                state.isDecrypDown ? Icons.arrow_drop_down_outlined : Icons.arrow_drop_up,
+                                state.isDecDown ? Icons.arrow_drop_down_outlined : Icons.arrow_drop_up,
                                 color: context.designColor,
+                              ),
+                              onTap: () {
+                                context.read<ContactsScreenBloc>().add(
+                                      DecryptionDownUp(isDecDown: state.isDecDown),
+                                    );
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                      if (state.buttonShowDec)
+                        InkWell(
+                          onTap: () async {
+                            try {
+                              var result = await OpenPGP.decrypt(
+                                _decryptionController.text,
+                                widget.keyPair?.privateKey ?? '',
+                                "Nilesh@9401",
+                              );
+                              decryptionResultController.text = result;
+                            } catch (e) {
+                              if (kDebugMode) {
+                                print(e);
+                              }
+                            }
+                          },
+                          child: Container(
+                            margin: const EdgeInsets.only(left: 15, bottom: 20),
+                            width: 98,
+                            height: 115,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: context.designColor,
+                            ),
+                            child: Center(
+                              child: Text(
+                                textAlign: TextAlign.center,
+                                StringConst.decrypt,
+                                style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                                      color: context.white,
+                                    ),
                               ),
                             ),
                           ),
                         ),
-                        Container(
-                          margin: const EdgeInsets.only(bottom: 25),
-                          height: 55,
-                          width: state.buttonShowDec ? MediaQuery.of(context).size.width / 1.65 : MediaQuery.of(context).size.width / 1.12,
-                          decoration: BoxDecoration(
-                            border: Border.all(width: 1, color: context.designColor),
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: ListTile(
-                            title: const Text(StringConst.verifyingKey),
-                            trailing: Icon(
-                              state.isDecDown ? Icons.arrow_drop_down_outlined : Icons.arrow_drop_up,
-                              color: context.designColor,
-                            ),
-                            onTap: () {
-                              context.read<ContactsScreenBloc>().add(DecryptionDownUp(isDecDown: state.isDecDown));
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                    if (state.buttonShowDec)
-                      InkWell(
-                        onTap: () async {
-                          try {
-                            var result = await OpenPGP.decrypt(
-                              _decryptionController.text,
-                              widget.keyPair?.privateKey ?? '',
-                              "Nilesh@9401",
-                            );
-                            decryptionResultController.text = result;
-                          } catch (e) {
-                            if (kDebugMode) {
-                              print(e);
-                            }
-                          }
-
-                        },
-                        child: Container(
-                          margin: const EdgeInsets.only(left: 15, bottom: 20),
-                          width: 105,
-                          height: 115,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                            color: context.designColor,
-                          ),
-                          child: Center(
-                            child: Text(
-                              textAlign: TextAlign.center,
-                              StringConst.decrypt,
-                              style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                                    color: context.white,
-                                  ),
-                            ),
-                          ),
-                        ),
+                    ],
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    constraints: const BoxConstraints(maxHeight: 170),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: context.designColor),
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(5),
                       ),
-                  ],
-                ),
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  constraints: const BoxConstraints(maxHeight: 170),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: context.designColor),
-                    borderRadius: const BorderRadius.all(
-                      Radius.circular(5),
+                    ),
+                    child: TextFormField(
+                      controller: _decryptionController,
+                      minLines: 6,
+                      cursorColor: context.designColor,
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        fillColor: context.designColor,
+                        hintText: StringConst.input,
+                        labelStyle: const TextStyle(color: Colors.black),
+                      ),
+                      keyboardType: TextInputType.multiline,
+                      maxLines: null,
                     ),
                   ),
-                  child: TextFormField(
-                    controller: _decryptionController,
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  TextFormField(
+                    controller: decryptionResultController,
+                    enabled: false,
                     minLines: 6,
-                    cursorColor: context.designColor,
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      fillColor: context.designColor,
-                      hintText: StringConst.input,
-                      labelStyle: const TextStyle(color: Colors.black),
-                    ),
+                    style: TextStyle(color: context.grey),
                     keyboardType: TextInputType.multiline,
                     maxLines: null,
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                TextFormField(
-                  controller: decryptionResultController,
-                  enabled: false,
-                  minLines: 6,
-                  style: TextStyle(color: context.grey),
-                  keyboardType: TextInputType.multiline,
-                  maxLines: null,
-                  decoration: InputDecoration(
-                    fillColor: context.designColor,
-                    hintText: StringConst.output,
-                    hintStyle: TextStyle(color: context.grey),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: context.designColor, width: 2),
-                      borderRadius: BorderRadius.circular(5.0),
-                    ),
-                    border: const OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(5.0),
+                    decoration: InputDecoration(
+                      fillColor: context.designColor,
+                      hintText: StringConst.output,
+                      hintStyle: TextStyle(color: context.grey),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: context.designColor, width: 2),
+                        borderRadius: BorderRadius.circular(5.0),
                       ),
+                      border: const OutlineInputBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(5.0),
+                        ),
+                      ),
+                      labelStyle: const TextStyle(color: Colors.black),
                     ),
-                    labelStyle: const TextStyle(color: Colors.black),
                   ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-              ],
-            ),
-            if (state.showKeyListDecry)
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(8), // Optional: Add rounded corners
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 2,
-                      blurRadius: 5,
-                      offset: const Offset(0, 3), // changes position of shadow
-                    ),
-                  ],
-                ),
-                margin: EdgeInsets.only(top: MediaQuery.of(context).size.width / 5),
-                width: state.buttonShowDec ? MediaQuery.of(context).size.width / 1.65 : MediaQuery.of(context).size.width / 1.12,
-                child: FutureBuilder(
-                  future: services.fetchUsers(),
-                  builder: (context, snapshot) {
-                    List<GenerateKeyModel> keyList = snapshot.data ?? [];
-                    return ListView.builder(
-                      shrinkWrap: true,
-                      primary: false,
-                      itemCount: keyList.length,
-                      itemBuilder: (context, index) {
-                        if (!snapshot.hasData) {
-                          return const Center(child: Text('app '));
-                        }
-                        return ListTile(
-                          onTap: () {
-                            selectedName = keyList[index].name.toString();
-                            selectedKey = keyList[index].key.toString();
-                            context.read<ContactsScreenBloc>().add(
-                                  DecryptionButtonShow(buttonShowDec: true),
-                                );
-                            context.read<ContactsScreenBloc>().add(
-                                  DecryptionShowKeyList(showKeyListDecry: false),
-                                );
-                            context.read<ContactsScreenBloc>().add(
-                              DecryptionSigningDown(isDecrypDown: true),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                ],
+              ),
+              if (state.showKeyListDecry)
+                SizedBox(
+                  width: state.buttonShowDec ? MediaQuery.of(context).size.width / 1.65 : MediaQuery.of(context).size.width / 1.12,
+                  child: Card(
+                    elevation: 3,
+                    margin: EdgeInsets.only(top: MediaQuery.of(context).size.width / 5.5),
+                    child: FutureBuilder(
+                      future: services.fetchUsers(),
+                      builder: (context, snapshot) {
+                        List<GenerateKeyModel> keyList = snapshot.data ?? [];
+                        return ListView.builder(
+                          shrinkWrap: true,
+                          primary: false,
+                          itemCount: keyList.length,
+                          itemBuilder: (context, index) {
+                            if (!snapshot.hasData) {
+                              return const Center(child: Text('app '));
+                            }
+                            return ListTile(
+                              onTap: () {
+                                selectedName = keyList[index].name.toString();
+                                selectedKey = keyList[index].key.toString();
+                                context.read<ContactsScreenBloc>().add(
+                                      DecryptionButtonShow(buttonShowDec: true),
+                                    );
+                                context.read<ContactsScreenBloc>().add(
+                                      DecryptionShowKeyList(showKeyListDecry: false),
+                                    );
+                                context.read<ContactsScreenBloc>().add(
+                                      DecryptionSigningDown(isDecrypDown: false),
+                                    );
+                              },
+                              title: Text(keyList[index].name),
                             );
-
                           },
-                          title: Text(keyList[index].name),
                         );
                       },
-                    );
-                  },
+                    ),
+                  ),
                 ),
-              ),
-          ],
+            ],
+          ),
         ),
       );
     });

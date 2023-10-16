@@ -11,6 +11,7 @@ class Images {
 
   // image
   static const String imageHome = '$imageDir/home_main.png';
+  static const String imageChatBackGround = '$imageDir/chatBackground.png';
 
   // loti animation
   static const String arrowDownAnimation = '$lotiAni/downArror.json';

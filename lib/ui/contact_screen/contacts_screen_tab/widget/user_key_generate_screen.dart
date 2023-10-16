@@ -70,7 +70,7 @@ class _UserKeyGenerateScreenState extends State<UserKeyGenerateScreen> {
                           ),
                           validator: (value) {
                             if (value!.isEmpty) {
-                              return 'Name is required*';
+                              return StringConst.nameRequired;
                             }
                             return null;
                           }),
@@ -90,7 +90,7 @@ class _UserKeyGenerateScreenState extends State<UserKeyGenerateScreen> {
                         ),
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return 'Email is required*';
+                            return StringConst.emailRequired;
                           }
                           return null;
                         },
@@ -163,7 +163,7 @@ class _UserKeyGenerateScreenState extends State<UserKeyGenerateScreen> {
                           vertical: 15,
                         ),
 
-                        backgroundColor: context.designColor, // Background color
+                        backgroundColor: context.designColor,
                       ),
                       child: const Text(
                         StringConst.generateButton,

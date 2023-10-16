@@ -48,6 +48,22 @@
   static const keyGenerateTime = 'Key generation time depends on key length';
   static const deviceSpecs = 'and device specs';
   static const registerButton = 'Register';
+  static const h = 'H';
+  static const nameRequired = 'Name is required*';
+  static const emailRequired = 'Email is required*';
+  static const userNameRequired = 'Username is required*';
+  static const supportScreen = 'Support';
+  static const settingScreen = 'Settings';
+  static const userKeys = 'fnejhfjufhdjbjdsfgdsgrgbdfgfgdfgfdghfdg';
+  static const profile = 'Profile';
+  static const chatSetting = 'Chat setting';
+  static const backup = 'Backup';
+  static const restore = 'Restore';
+  static const english = 'English';
+  static const hindi = 'Hindi';
+  static const spanish = 'Spanish';
+  static const gujarati = 'Gujarati';
+  static const language = 'Language';
 
 
 }

@@ -87,13 +87,4 @@ class ContactsScreenBloc extends Bloc<ContactsScreenEvent,ContactsScreenState>{
     );
     emit(state.copyWith(keyPair: keyPair,keyOptions: keyOptions));
   }
-
-
-
-
-
-
-
-
-
 }

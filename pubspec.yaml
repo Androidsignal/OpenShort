@@ -53,6 +53,7 @@ dependencies:
   bluetooth_connector: ^0.0.3
   flutter_blue: ^0.8.0
   permission_handler: ^10.4.3
+  connectivity:
 
 
 

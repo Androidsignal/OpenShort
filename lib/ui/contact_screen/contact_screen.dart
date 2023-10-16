@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:openpgp/openpgp.dart';
 import 'package:org/constant/string_constant.dart';
 import 'package:org/ui/contact_screen/bloc/contact_screen_state.dart';
 import 'bloc/contact_screen_bloc.dart';
@@ -21,14 +20,10 @@ class ContactScreen extends StatefulWidget {
 class _ContactScreenState extends State<ContactScreen> with TickerProviderStateMixin {
   late final TabController tabController;
 
-
-
   @override
   void initState() {
     super.initState();
     tabController = TabController(length: 4, vsync: this);
-
-    // context.read<ContactsScreenBloc>().add(GenerateKeyPair());
     getKeyPair();
   }
 
@@ -44,8 +39,8 @@ class _ContactScreenState extends State<ContactScreen> with TickerProviderStateM
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ContactsScreenBloc,ContactsScreenState>(
-      builder: (context,state) {
+    return BlocBuilder<ContactsScreenBloc, ContactsScreenState>(
+      builder: (context, state) {
         return DefaultTabController(
           length: 4,
           child: Scaffold(
@@ -81,7 +76,7 @@ class _ContactScreenState extends State<ContactScreen> with TickerProviderStateM
             ),
           ),
         );
-      }
+      },
     );
   }
 }
